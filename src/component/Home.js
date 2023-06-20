@@ -1,17 +1,17 @@
 import React from "react";
-import Navbar from "./Navbar";
 import { NavLink } from "react-router-dom";
+import DisplayItem from "./DisplayItem";
 
 const Home = () => {
   return (
     <>
-      <Navbar />
-      <div className="container">
+      <div className="container my-3 ">
         <NavLink to="/detail-form">
-          <button type="button" class="btn btn-primary">
+          <button type="button" className="btn btn-primary">
             Add item
           </button>
         </NavLink>
+        <DisplayItem />
       </div>
     </>
   );

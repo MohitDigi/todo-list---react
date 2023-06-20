@@ -26,13 +26,7 @@ const Navbar = () => {
                 <NavLink className="nav-link active" aria-current="page" to="/">
                   Home
                 </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/display-item">
-                 Tasks
-                </NavLink>
-              </li>
-              
+              </li>              
             </ul>
             <form className="d-flex mx-5" role="search">
               <input

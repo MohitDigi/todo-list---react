@@ -1,16 +1,17 @@
 import { Routes ,  Route } from "react-router-dom";
-import DisplayItem from "./component/DisplayItem";
 import DetailForm from "./component/DetailForm";
 import Home from "./component/Home";
+import Navbar from "./component/Navbar";
 
 function App() {
   return (
     <>
+    <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/display-item" element={<DisplayItem />} />
         <Route path="/detail-form" element={<DetailForm />} />
       </Routes>
+     
     </>
   );
 }
