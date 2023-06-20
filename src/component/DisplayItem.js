@@ -3,7 +3,10 @@ import Navbar from './Navbar'
 
 const DisplayItem = () => {
   return (
+    <>
     <div><Navbar/></div>
+    
+    </>
   )
 }
 

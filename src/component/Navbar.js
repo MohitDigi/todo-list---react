@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary ">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/">
             <strong>Todo App</strong>
-          </Link>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,18 +23,18 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <NavLink className="nav-link active" aria-current="page" to="/">
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/display-item">
+                <NavLink className="nav-link" to="/display-item">
                  Tasks
-                </Link>
+                </NavLink>
               </li>
               
             </ul>
-            <form className="d-flex" role="search">
+            <form className="d-flex mx-5" role="search">
               <input
                 className="form-control me-2"
                 type="search"
