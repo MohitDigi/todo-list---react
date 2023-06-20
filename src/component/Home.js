@@ -8,7 +8,7 @@ const Home = () => {
       <div className="container my-3 ">
         <NavLink to="/detail-form">
           <button type="button" className="btn btn-primary">
-            Add item
+            Add Task
           </button>
         </NavLink>
         <DisplayItem />

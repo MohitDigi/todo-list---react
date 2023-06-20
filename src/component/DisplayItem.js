@@ -26,7 +26,7 @@ const DisplayItem = () => {
       {task.map((task) => {
         return (
           <div key={task.id} className="container my-3">
-            <div className="accordion" id="accordionExample">
+            <div className="accordion " id="accordionExample">
               <div className="accordion-item">
                 <h2 className="accordion-header">
                   <button
