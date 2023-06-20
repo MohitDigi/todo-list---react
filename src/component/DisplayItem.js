@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Pagination } from "antd";
 
 const DisplayItem = () => {
   const [task, setTask] = useState([]);
+  const [showPerPage, setShowPerPage] = useState(4);
+  const [pagination, setPagination] = useState({
+    start:0,
+    end:showPerPage,
+  });
 
   useEffect(() => {
     loadTask();
@@ -23,8 +29,9 @@ const DisplayItem = () => {
 
   return (
     <>
-      {task.map((task) => {
+      {task.slice(pagination.start,pagination.end).map((task) => {
         return (
+          <>
           <div key={task.id} className="container my-3">
             <div className="accordion " id="accordionExample">
               <div className="accordion-item">
@@ -37,6 +44,7 @@ const DisplayItem = () => {
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
+                    
                     {task.title}
                   </button>
                 </h2>
@@ -50,8 +58,10 @@ const DisplayItem = () => {
               </div>
             </div>
           </div>
+          </>
         );
       })}
+      <Pagination showPerPage={showPerPage}/>
     </>
   );
 };
