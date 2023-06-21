@@ -19,7 +19,7 @@ const DisplayItem = () => {
     const result = await axios
       .get("http://localhost:3003/tasks")
       .then((res) => {
-        setTask(res.data);
+        setTask(res.data.reverse());
         console.log(res.data);
       })
       .catch((err) => {
@@ -33,52 +33,43 @@ const DisplayItem = () => {
   };
   return (
     <>
-      {task.map((task) => {
+      {task.map((task, index) => {
         return (
-          <>
           <div key={task.id} className="container my-3">
-            <div className="accordion " id="accordionExample">
+            <div className="accordion" id={`accordionExample-${index}`}>
               <div className="accordion-item">
                 <h2 className="accordion-header">
                   <button
                     className="accordion-button"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne"
+                    data-bs-target={`#collapseOne-${index}`}
+                    aria-expanded="false" 
+                    aria-controls={`collapseOne-${index}`}
                   >
-                    
                     {task.title}
-                  
                   </button>
                 </h2>
                 <div
-                  id="collapseOne"
-                  className="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
+                  id={`collapseOne-${index}`}
+                  className="accordion-collapse collapse "
+                  data-bs-parent={`#accordionExample-${index}`}
                 >
-                  <div className="accordion-body">{task.description}
-                  </div>
+                  <div className="accordion-body">{task.description}</div>
                   <Link to={`/update/${task.id}`}>
-
-                  <button type="button" class="btn">Update</button>
+                    <button type="button" className="btn">
+                      Update
+                    </button>
                   </Link>
-                 
-
                   <Button onClick={() => deleteTask(task.id)}>Delete</Button>
-                
                 </div>
               </div>
-             
             </div>
           </div>
-          </>
         );
       })}
-      {/* <Pagination showPerPage={showPerPage}/> */}
     </>
   );
-};
+    }  
 
 export default DisplayItem;

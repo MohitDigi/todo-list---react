@@ -42,7 +42,6 @@ const DetailForm = () => {
           placeholder="Enter Title of the Task"
           value={title}
           onChange={onInputChange}
-          pattern='[abc]'
         />
         <P>Description</P>
         <TEXTAREA
