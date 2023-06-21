@@ -1,85 +1,102 @@
-import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { Button, Col } from "antd";
 import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { GiCancel } from "react-icons/gi";
+import { FaCheck } from "react-icons/fa";
 
 const DetailForm = () => {
-  const [user, setUser] = useState([]);
+  let navigate = useNavigate();
+  const [task, setTask] = useState({
+    id: "",
+    title: "",
+    description: "",
+    status: "",
+  });
 
-  useEffect(() => {
-    loadUser();
-  }, []);
-
-  const loadUser = async () => {
-   const result = await axios
-    .get("http://localhost:3003/tasks")
-    .then((res) => {
-        setUser(res.data);
-      })
-    .catch((err) => {
-        console.log(err);
-      });
-    console.log(result);
+  const { id, title, description, status } = task;
+  const onInputChange = (e) => {
+    setTask({ ...task, [e.target.name]: e.target.value });
   };
-
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(task)
+    await axios.post("http://localhost:3003/tasks", task);
+  };
+  
   return (
-    <>
-      <div className="container my-4">
-        <div className="mb-3">
-          <label for="exampleFormControlInput1" className="form-label">
-            Title
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Title"
-          />
-        </div>
-        <div className="mb-3">
-          <label for="exampleFormControlTextarea1" className="form-label">
-            Description
-          </label>
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-          ></textarea>
-        </div>
-
-        <div className="dropdown">
-          <button
-            className="btn btn-secondary btn-sm dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Status
-          </button>
-          <ul className="dropdown-menu">
-            <li>
-              <a className="dropdown-item" href="#">
-                Pending
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                In Process
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Complete
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="my-3">
-          <button type="submit" className="btn btn-primary ">
-            Submit
-          </button>
-        </div>
-      </div>
-    </>
+    <div>
+      <COL offset={10}>
+        <P>Id</P>
+        <INPUT
+          type="text"
+          name="id"
+          placeholder="Enter your id"
+          value={id}
+          onChange={onInputChange}
+        />
+        <P>Title</P>
+        <INPUT
+          type="text"
+          name="title"
+          placeholder="Enter Title of the Task"
+          value={title}
+          onChange={onInputChange}
+          pattern='[abc]'
+        />
+        <P>Description</P>
+        <TEXTAREA
+          type="text"
+          name="description"
+          placeholder="Enter Description"
+          value={description}
+          onChange={onInputChange}
+        />
+        <P>Status</P>
+        <INPUT
+          type="text"
+          name="status"
+          placeholder="Status: "
+          value={status}
+          onChange={onInputChange}
+        />
+      </COL>
+      <Col style={{ marginTop: "10px" }} offset={11}>
+        <Button onClick={onSubmit} type="primary">
+          <FaCheck />
+        </Button>
+        <B href="/">
+          <GiCancel />
+        </B>
+      </Col>
+    </div>
   );
 };
+
+const COL = styled(Col)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+const P = styled.p``;
+
+const INPUT = styled.input`
+  width: 30%;
+  height: 2em;
+  border: 1px solid;
+  border-radius: 4px;
+`;
+
+const TEXTAREA = styled.textarea`
+  width: 30%;
+  height: 10em;
+  border: 1px solid;
+  border-radius: 4px;
+`;
+
+const B = styled(Button)`
+  left: 10px;
+`;
 
 export default DetailForm;

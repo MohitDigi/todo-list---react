@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Pagination } from "antd";
+import { Button} from "antd";
+import {Link } from "react-router-dom";
 
 const DisplayItem = () => {
   const [task, setTask] = useState([]);
-  const [showPerPage, setShowPerPage] = useState(4);
-  const [pagination, setPagination] = useState({
-    start:0,
-    end:showPerPage,
-  });
+  // const [showPerPage, setShowPerPage] = useState(4);
+  // const [pagination, setPagination] = useState({
+  //   start:0,
+  //   end:showPerPage,
+  // });
 
   useEffect(() => {
     loadTask();
@@ -26,10 +27,13 @@ const DisplayItem = () => {
       });
     console.log(result);
   };
-
+  const deleteTask = async (id) => {
+    await axios.delete(`http://localhost:3003/tasks/${id}`);
+    loadTask();
+  };
   return (
     <>
-      {task.slice(pagination.start,pagination.end).map((task) => {
+      {task.map((task) => {
         return (
           <>
           <div key={task.id} className="container my-3">
@@ -46,6 +50,7 @@ const DisplayItem = () => {
                   >
                     
                     {task.title}
+                  
                   </button>
                 </h2>
                 <div
@@ -53,15 +58,25 @@ const DisplayItem = () => {
                   className="accordion-collapse collapse show"
                   data-bs-parent="#accordionExample"
                 >
-                  <div className="accordion-body">{task.description}</div>
+                  <div className="accordion-body">{task.description}
+                  </div>
+                  <Link to={`/update/${task.id}`}>
+
+                  <button type="button" class="btn">Update</button>
+                  </Link>
+                 
+
+                  <Button onClick={() => deleteTask(task.id)}>Delete</Button>
+                
                 </div>
               </div>
+             
             </div>
           </div>
           </>
         );
       })}
-      <Pagination showPerPage={showPerPage}/>
+      {/* <Pagination showPerPage={showPerPage}/> */}
     </>
   );
 };
