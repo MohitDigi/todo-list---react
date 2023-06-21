@@ -25,76 +25,75 @@ const DetailForm = () => {
     navigate("/");
   };
   return (
-    <div>
-      <COL offset={10}>
-        <P>Id</P>
-        <INPUT
-          type="text"
-          name="id"
-          placeholder="Enter your id"
-          value={id}
-          onChange={onInputChange}
-        />
-        <P>Title</P>
-        <INPUT
-          type="text"
-          name="title"
-          placeholder="Enter Title of the Task"
-          value={title}
-          onChange={onInputChange}
-        />
-        <P>Description</P>
-        <TEXTAREA
-          type="text"
-          name="description"
-          placeholder="Enter Description"
-          value={description}
-          onChange={onInputChange}
-        />
-        <P>Status</P>
-        <INPUT
-          type="text"
-          name="status"
-          placeholder="Status: "
-          value={status}
-          onChange={onInputChange}
-        />
-      </COL>
-      <Col style={{ marginTop: "10px" }} offset={11}>
-        <Button onClick={onSubmit} type="primary">
-          <FaCheck />
-        </Button>
-        <B href="/">
-          <GiCancel />
-        </B>
-      </Col>
-    </div>
+    <>
+      <div className="container my-5">
+        <div class="mb-3">
+          <label htmlFor="id" class="form-label">
+            ID
+          </label>
+          <input
+            class="form-control"
+            type="text"
+            name="id"
+            placeholder="Enter your id"
+            value={id}
+            onChange={onInputChange}
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="title" class="form-label">
+            Title
+          </label>
+          <input
+            class="form-control"
+            type="text"
+            name="title"
+            placeholder="Enter Title of the Task"
+            value={title}
+            onChange={onInputChange}
+          />
+        </div>
+
+        <div class="mb-3">
+          <label htmlFor="description" class="form-label">
+            Description
+          </label>
+          <input
+            class="form-control"
+            type="text"
+            name="description"
+            placeholder="Enter Description"
+            value={description}
+            onChange={onInputChange}
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="status" class="form-label">
+            Status
+          </label>
+          <input
+            class="form-control"
+            type="text"
+            name="status"
+            placeholder="Status: "
+            value={status}
+            onChange={onInputChange}
+          />
+        </div>
+
+        <button
+          onClick={onSubmit}
+          type="button"
+          class="btn btn-outline-primary mx-2"
+        >
+          Submit
+        </button>
+        <button type="button" class="btn btn-outline-danger" href="/">
+          Cancel
+        </button>
+      </div>
+    </>
   );
 };
-
-const COL = styled(Col)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const P = styled.p``;
-
-const INPUT = styled.input`
-  width: 30%;
-  height: 2em;
-  border: 1px solid;
-  border-radius: 4px;
-`;
-
-const TEXTAREA = styled.textarea`
-  width: 30%;
-  height: 10em;
-  border: 1px solid;
-  border-radius: 4px;
-`;
-
-const B = styled(Button)`
-  left: 10px;
-`;
 
 export default DetailForm;

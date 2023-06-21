@@ -1,10 +1,6 @@
-import styled from "styled-components";
-import { Button, Col } from "antd";
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { FaCheck } from "react-icons/fa";
+import axios from "axios";
 
 const Update = () => {
   let navigate = useNavigate();
@@ -38,7 +34,7 @@ const Update = () => {
   };
   return (
     <div className="container my-5">
-      <COL>
+     
         <div class="mb-3">
           <label htmlFor="title" class="form-label">
             Title
@@ -79,35 +75,18 @@ const Update = () => {
           />
         </div>
         
-        
-        
-      </COL>
-      <Col style={{ marginTop: "10px" }} offset={11}>
-        <Button onClick={onSubmit} type="primary">
-         Submit
-        </Button>
-        <B href="/">Back</B>
-      </Col>
+        <button
+          onClick={onSubmit}
+          type="button"
+          class="btn btn-outline-primary mx-2"
+        >
+          Submit
+        </button>
+        <button type="button" class="btn btn-outline-danger" href="/">
+          Cancel
+        </button>
     </div>
   );
 };
-
-const COL = styled(Col)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const P = styled.p``;
-
-const INPUT = styled.input`
-  width: 30%;
-  height: 2em;
-  ${"" /* margin-bottom:2px; */}
-  border: 1px solid;
-  border-radius: 4px;
-`;
-const B = styled(Button)`
-  left: 10px;
-`;
 
 export default Update;
