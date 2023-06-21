@@ -551,18 +551,6 @@
       "title": "Chisum",
       "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
       "status": "Puce"
-    },
-    {
-      "id": 98,
-      "title": "Big Store, The",
-      "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
-      "status": "Violet"
-    },
-    {
-      "id": 99,
-      "title": "Hills Have Eyes II, The",
-      "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-      "status": "Violet"
     }
   ]
 }

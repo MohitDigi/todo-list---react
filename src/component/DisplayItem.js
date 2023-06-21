@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button} from "antd";
-import {Link } from "react-router-dom";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 const DisplayItem = () => {
   const [task, setTask] = useState([]);
-  // const [showPerPage, setShowPerPage] = useState(4);
-  // const [pagination, setPagination] = useState({
-  //   start:0,
-  //   end:showPerPage,
-  // });
 
   useEffect(() => {
     loadTask();
@@ -44,7 +39,7 @@ const DisplayItem = () => {
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target={`#collapseOne-${index}`}
-                    aria-expanded="false" 
+                    aria-expanded="false"
                     aria-controls={`collapseOne-${index}`}
                   >
                     {task.title}
@@ -56,12 +51,23 @@ const DisplayItem = () => {
                   data-bs-parent={`#accordionExample-${index}`}
                 >
                   <div className="accordion-body">{task.description}</div>
-                  <Link to={`/update/${task.id}`}>
-                    <button type="button" className="btn">
-                      Update
+                  <div
+                    class=" my-2 mx-2"
+                    
+                  >
+                    <Link to={`/update/${task.id}`}>
+                      <button type="button" className="btn btn-outline-primary">
+                        Update
+                      </button>
+                    </Link>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger mx-2"
+                      onClick={() => deleteTask(task.id)}
+                    >
+                      Delete
                     </button>
-                  </Link>
-                  <Button onClick={() => deleteTask(task.id)}>Delete</Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -70,6 +76,6 @@ const DisplayItem = () => {
       })}
     </>
   );
-    }  
+};
 
 export default DisplayItem;
