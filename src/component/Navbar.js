@@ -28,7 +28,7 @@ const Navbar = () => {
                 </NavLink>
               </li>              
             </ul>
-            <form className="d-flex mx-5" role="search">
+            {/* <form className="d-flex mx-5" role="search">
               <input
                 className="form-control me-2"
                 type="search"
@@ -38,7 +38,7 @@ const Navbar = () => {
               <button className="btn btn-success" type="submit">
                 Search
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
       </nav>
