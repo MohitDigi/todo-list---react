@@ -21,10 +21,9 @@ const DetailForm = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.log(task)
     await axios.post("http://localhost:3003/tasks", task);
+    navigate("/");
   };
-  
   return (
     <div>
       <COL offset={10}>
