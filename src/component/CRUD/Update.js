@@ -7,14 +7,13 @@ const Update = () => {
   const { id } = useParams();
   const [task, setTask] = useState({
     id: "",
-    title: "",
-    description: "",
-    status: "",
+    name: "",
+    phone: "",
   });
 
-  const { title, description, status } = task;
+  const { name, phone } = task;
   const loadTask = async () => {
-    const data = await axios.get(`http://localhost:3003/tasks/${id}`);
+    const data = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
     console.log("update", data.data);
     setTask(data.data);
   };
@@ -29,52 +28,40 @@ const Update = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:3003/tasks/${id}`, task);
+    await axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, task);
     navigate("/");
   };
   return (
     <div className="container my-5">
      
         <div class="mb-3">
-          <label htmlFor="title" class="form-label">
-            Title
+          <label htmlFor="name" class="form-label">
+            Name
           </label>
           <input
             class="form-control"
             type="text"
-            name="title"
+            name="name"
             placeholder="Enter Title of the Task"
-            value={title}
+            value={name}
             onChange={onInputChange}
+            required
           />
         </div>
         <div class="mb-3">
-          <label htmlFor="description" class="form-label">
-          Description
+          <label htmlFor="phone" class="form-label">
+          Phone Number
           </label>
           <input
             class="form-control"
             type="text"
-            name="description"
-            placeholder="Enter Description"
-            value={description}
+            name="phone"
+            placeholder="Enter Phone Number"
+            value={phone}
             onChange={onInputChange}
+            required
           />
         </div>
-        <div class="mb-3">
-          <label htmlFor="description" class="form-label">
-          Status
-          </label>
-          <input
-            class="form-control"
-            type="text"
-            name="status"
-            placeholder="Status: "
-            value={status}
-            onChange={onInputChange}
-          />
-        </div>
-        
         <button
           onClick={onSubmit}
           type="button"
@@ -82,7 +69,7 @@ const Update = () => {
         >
           Submit
         </button>
-        <button type="button" class="btn btn-outline-danger" href="/">
+        <button type="button" class="btn btn-outline-danger" onClick={() => navigate('/')}>
           Cancel
         </button>
     </div>

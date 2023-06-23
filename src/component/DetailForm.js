@@ -1,18 +1,13 @@
-import styled from "styled-components";
-import { Button, Col } from "antd";
-import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { GiCancel } from "react-icons/gi";
-import { FaCheck } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const DetailForm = () => {
   let navigate = useNavigate();
   const [task, setTask] = useState({
     id: "",
-    title: "",
-    description: "",
-    status: "",
+    name: "",
+    phone: "",
   });
 
   const { id, title, description, status } = task;
@@ -21,7 +16,7 @@ const DetailForm = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:3003/tasks", task);
+    await axios.post("https://jsonplaceholder.typicode.com/users", task);
     navigate("/");
   };
   return (
@@ -35,52 +30,38 @@ const DetailForm = () => {
             class="form-control"
             type="text"
             name="id"
-            placeholder="Enter your id"
+            placeholder="Enter id"
             value={id}
             onChange={onInputChange}
           />
         </div>
         <div class="mb-3">
           <label htmlFor="title" class="form-label">
-            Title
+            Name
           </label>
           <input
             class="form-control"
             type="text"
             name="title"
-            placeholder="Enter Title of the Task"
+            placeholder="Enter Name"
             value={title}
             onChange={onInputChange}
           />
         </div>
 
         <div class="mb-3">
-          <label htmlFor="description" class="form-label">
-            Description
+          <label htmlFor="phone" class="form-label">
+            phone
           </label>
           <input
             class="form-control"
             type="text"
-            name="description"
-            placeholder="Enter Description"
+            name="phone"
+            placeholder="Enter Phone"
             value={description}
             onChange={onInputChange}
           />
         </div>
-        <div class="mb-3">
-          <label htmlFor="status" class="form-label">
-            Status
-          </label>
-          <input
-            class="form-control"
-            type="text"
-            name="status"
-            placeholder="Status: "
-            value={status}
-            onChange={onInputChange}
-          />
-        </div>
-
         <button
           onClick={onSubmit}
           type="button"
@@ -88,9 +69,11 @@ const DetailForm = () => {
         >
           Submit
         </button>
-        <button type="button" class="btn btn-outline-danger" href="/">
+        <Link to='/'>
+        <button type="button" class="btn btn-outline-danger">
           Cancel
         </button>
+          </Link>
       </div>
     </>
   );

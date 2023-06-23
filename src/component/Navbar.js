@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  // const [value, setValue] = useState("");
+  // const handleSearch = (e) => {
+  //   setValue(e.target.value);
+  // };
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            <strong>Todo App</strong>
+            <strong>Contact List App</strong>
           </NavLink>
           <button
             className="navbar-toggler"
@@ -26,19 +30,8 @@ const Navbar = () => {
                 <NavLink className="nav-link active" aria-current="page" to="/">
                   Home
                 </NavLink>
-              </li>              
+              </li>
             </ul>
-            <form className="d-flex mx-5" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-success" type="submit">
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
