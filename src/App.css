@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding:0;
+}
+body{
+    background:mistyrose;
+}
+.add-btn{
+    margin: 1rem 0;
+}
+Table{
+    background:rgb(255, 241, 240);
+}

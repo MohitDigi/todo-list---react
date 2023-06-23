@@ -3,6 +3,7 @@ import DetailForm from "./component/DetailForm";
 import Home from "./component/Home";
 import Navbar from "./component/Navbar";
 import Update from "./component/CRUD/Update";
+import "./App.css"
 
 function App() {
   return (
